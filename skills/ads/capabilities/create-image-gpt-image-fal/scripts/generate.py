@@ -25,8 +25,10 @@ import argparse
 import sys
 from pathlib import Path
 
-SHARED = Path(__file__).resolve().parents[3] / "_shared"
-sys.path.insert(0, str(SHARED))
+# fal_helpers is vendored next to this script so the skill is self-contained —
+# it works when fetched/installed standalone (the DB/CLI path), not only in a
+# full-tree sandbox checkout.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fal_helpers import (  # noqa: E402
     download,

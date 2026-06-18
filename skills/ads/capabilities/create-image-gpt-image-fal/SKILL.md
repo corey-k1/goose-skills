@@ -116,5 +116,5 @@ When this atom generates a character anchor (lock-character Phase 0), the anchor
 - [fal.ai/models/fal-ai/gpt-image-1](https://fal.ai/models/fal-ai/gpt-image-1)
 - [fal.ai/models/openai/gpt-image-2](https://fal.ai/models/openai/gpt-image-2)
 - Sibling Higgsfield path: `mcp__higgsfield__generate_image` with `model="gpt_image_2"`
-- Shared helpers: `skills/ads/_shared/fal_helpers.py` (resolved at runtime via `parents[3]/_shared`)
+- Shared helpers: `scripts/fal_helpers.py` (vendored alongside generate.py — self-contained)
 - Storyboard-sheet consumer: `create-storyboard-sheets-fal` (video flow, in the separate ads-video repo)
