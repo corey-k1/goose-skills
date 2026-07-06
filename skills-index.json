@@ -1,6 +1,6 @@
 {
   "version": "1.2.0",
-  "generated": "2026-06-30",
+  "generated": "2026-07-06",
   "skills": [
     {
       "slug": "ad-angle-miner",
@@ -1740,6 +1740,41 @@
         ],
         "installation": {
           "base_command": "npx goose-skills install create-linkedin-content",
+          "supports": [
+            "claude",
+            "cursor",
+            "codex"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "create-video-seedance-2-fal",
+      "name": "create-video-seedance-2-fal",
+      "category": "capabilities",
+      "domain": "ads",
+      "description": "Generate a single 4-15s vertical video clip with ByteDance Seedance 2.0 reference-to-video via fal.ai. Multi-image reference (avatar + product + setting), native lip-synced VO + ambient audio via `generate_audio: true`, internal multi-cut handling within one render. The default clip atom for AI-creator UGC ads built on the NB2 + Seedance architecture. Validated on `beauty-by-earth/video-01`.",
+      "tags": "ads",
+      "path": "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal",
+      "files": [
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/SKILL.md",
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/scripts/generate.py",
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/skill.meta.json",
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/expected-output.md",
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/human-test.md",
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/sample-input.md",
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/smoke-test.md",
+        "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/verifier.md"
+      ],
+      "metadata": {
+        "slug": "create-video-seedance-2-fal",
+        "category": "capabilities",
+        "pack": "ugc-video-formats",
+        "tags": [
+          "ads"
+        ],
+        "installation": {
+          "base_command": "npx goose-skills install ugc-video-formats",
           "supports": [
             "claude",
             "cursor",
@@ -5210,6 +5245,36 @@
       }
     },
     {
+      "slug": "review-ugc-render",
+      "name": "review-ugc-render",
+      "category": "capabilities",
+      "domain": "ads",
+      "description": "Mandatory pre-publish review gate for a UGC video render. Transcribes the finished render's AUDIO with Whisper and word-diffs it against the approved spoken script, then gates set_final_render — blocking a render whose generated audio mis-voices a word (e.g. the approved \"human-vetted\" spoken as \"human witted\"), drops an approved phrase, or comes back silent. Runnable, gating counterpart to content-goose's review-transcript-integrity atom. Every ugc-video-formats recipe runs this after render and BEFORE set_final_render.",
+      "tags": "ads",
+      "path": "skills/ads/packs/ugc-video-formats/review-ugc-render",
+      "files": [
+        "skills/ads/packs/ugc-video-formats/review-ugc-render/SKILL.md",
+        "skills/ads/packs/ugc-video-formats/review-ugc-render/scripts/review_render.py",
+        "skills/ads/packs/ugc-video-formats/review-ugc-render/tests/test_review_render.py"
+      ],
+      "metadata": {
+        "slug": "review-ugc-render",
+        "category": "capabilities",
+        "pack": "ugc-video-formats",
+        "tags": [
+          "ads"
+        ],
+        "installation": {
+          "base_command": "npx goose-skills install ugc-video-formats",
+          "supports": [
+            "claude",
+            "cursor",
+            "codex"
+          ]
+        }
+      }
+    },
+    {
       "slug": "sales-call-prep",
       "name": "sales-call-prep",
       "category": "composites",
@@ -7164,6 +7229,67 @@
         ],
         "installation": {
           "base_command": "npx goose-skills install lead-gen-devtools",
+          "supports": [
+            "claude",
+            "cursor",
+            "codex"
+          ]
+        }
+      }
+    },
+    {
+      "slug": "ugc-video-formats",
+      "name": "UGC Video Ad Capabilities",
+      "type": "pack",
+      "domain": "ads",
+      "description": "Shared, reusable capabilities the video-ad orchestrator composes to render short-form ads locally (Seedance 2.0 reference-to-video render engine + the render QC gate). The per-format recipes are NOT skills — each ad format is a TEMPLATE (data) in the ad_sample DB (recipe = the capabilities it uses + its instructions + config + brand-input contract). The goose-video composite reads a template from the DB and runs these capabilities. Removed the per-format create-*/remix-* template-skills (they belong in the DB, not the skill library).",
+      "tags": "ads",
+      "path": "skills/ads/packs/ugc-video-formats",
+      "shared_files": [],
+      "skills": [
+        {
+          "slug": "create-video-seedance-2-fal",
+          "name": "create-video-seedance-2-fal",
+          "description": "Generate a single 4-15s vertical video clip with ByteDance Seedance 2.0 reference-to-video via fal.ai. Multi-image reference (avatar + product + setting), native lip-synced VO + ambient audio via `generate_audio: true`, internal multi-cut handling within one render. The default clip atom for AI-creator UGC ads built on the NB2 + Seedance architecture. Validated on `beauty-by-earth/video-01`.",
+          "path": "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal",
+          "files": [
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/SKILL.md",
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/scripts/generate.py",
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/skill.meta.json",
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/expected-output.md",
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/human-test.md",
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/sample-input.md",
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/smoke-test.md",
+            "skills/ads/packs/ugc-video-formats/create-video-seedance-2-fal/tests/verifier.md"
+          ],
+          "source": "pack"
+        },
+        {
+          "slug": "review-ugc-render",
+          "name": "review-ugc-render",
+          "description": "Mandatory pre-publish review gate for a UGC video render. Transcribes the finished render's AUDIO with Whisper and word-diffs it against the approved spoken script, then gates set_final_render — blocking a render whose generated audio mis-voices a word (e.g. the approved \"human-vetted\" spoken as \"human witted\"), drops an approved phrase, or comes back silent. Runnable, gating counterpart to content-goose's review-transcript-integrity atom. Every ugc-video-formats recipe runs this after render and BEFORE set_final_render.",
+          "path": "skills/ads/packs/ugc-video-formats/review-ugc-render",
+          "files": [
+            "skills/ads/packs/ugc-video-formats/review-ugc-render/SKILL.md",
+            "skills/ads/packs/ugc-video-formats/review-ugc-render/scripts/review_render.py",
+            "skills/ads/packs/ugc-video-formats/review-ugc-render/tests/test_review_render.py"
+          ],
+          "source": "pack"
+        }
+      ],
+      "metadata": {
+        "slug": "ugc-video-formats",
+        "name": "UGC Video Ad Capabilities",
+        "description": "Shared, reusable capabilities the video-ad orchestrator composes to render short-form ads locally (Seedance 2.0 reference-to-video render engine + the render QC gate). The per-format recipes are NOT skills — each ad format is a TEMPLATE (data) in the ad_sample DB (recipe = the capabilities it uses + its instructions + config + brand-input contract). The goose-video composite reads a template from the DB and runs these capabilities. Removed the per-format create-*/remix-* template-skills (they belong in the DB, not the skill library).",
+        "tags": [
+          "ads"
+        ],
+        "skills": [
+          "create-video-seedance-2-fal",
+          "review-ugc-render"
+        ],
+        "installation": {
+          "base_command": "npx goose-skills install ugc-video-formats",
           "supports": [
             "claude",
             "cursor",
