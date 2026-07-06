@@ -1,7 +1,6 @@
 ---
 name: render-photo-grid-card
-description: >-
-  Render a designed 'photo-grid promo card' video from a config: a real-DOM HTML card (wordmark + headline + 2xN tile grid of product/lifestyle/%-OFF/promo-code + feature chips) frame-stepped to PNG via Playwright and encoded with FFmpeg. Deterministic, FREE (no paid calls), text stays pixel-crisp. The template recipe supplies the config; music is added separately (create-music-elevenlabs). Use for the photo-grid-promo-card format.
+description: Render a designed 'photo-grid promo card' video from a config — a real-DOM HTML card (wordmark + headline + 2xN tile grid of product/lifestyle/%-OFF/promo-code + feature chips) frame-stepped to PNG via Playwright and encoded with FFmpeg. Deterministic, FREE (no paid calls), text stays pixel-crisp. The template recipe supplies the config; music is added separately (create-music-elevenlabs). Use for the photo-grid-promo-card format.
 status: active
 ---
 

@@ -1590,10 +1590,16 @@
       "name": "create-image-fal",
       "category": "capabilities",
       "domain": "ads",
-      "description": ">-",
+      "description": "Generate or edit an image via any FAL image model (nano-banana edit, gpt-image, flux, ...), ROUTED THROUGH THE fal-proxy so it bills the Ads agent. image_urls must be public URLs (orchestrator hosts local product refs via MCP upload->presign). The recipe names the model + prompt. Use for keyframes, flat-cover transforms, product hero edits. (For the OpenAI gpt-image family specifically, create-image-gpt-image-fal also exists.)",
       "tags": "ads",
       "path": "skills/ads/capabilities/create-image-fal",
-      "files": [],
+      "files": [
+        "skills/ads/capabilities/create-image-fal/SKILL.md",
+        "skills/ads/capabilities/create-image-fal/scripts/gen_image.py",
+        "skills/ads/capabilities/create-image-fal/scripts/media_proxy.py",
+        "skills/ads/capabilities/create-image-fal/skill.meta.json",
+        "skills/ads/capabilities/create-image-fal/tests/smoke-test.md"
+      ],
       "metadata": {
         "slug": "create-image-fal",
         "category": "capabilities",
@@ -1782,10 +1788,16 @@
       "name": "create-music-elevenlabs",
       "category": "capabilities",
       "domain": "ads",
-      "description": ">-",
+      "description": "Generate an instrumental music bed via ElevenLabs Music, ROUTED THROUGH THE elevenlabs-proxy so it bills the Ads agent. Trims any sparse intro, loudnorm, fades the tail. Prompt + length from the template recipe. Use for the music layer of any video-ad format.",
       "tags": "ads",
       "path": "skills/ads/capabilities/create-music-elevenlabs",
-      "files": [],
+      "files": [
+        "skills/ads/capabilities/create-music-elevenlabs/SKILL.md",
+        "skills/ads/capabilities/create-music-elevenlabs/scripts/gen_music.py",
+        "skills/ads/capabilities/create-music-elevenlabs/scripts/media_proxy.py",
+        "skills/ads/capabilities/create-music-elevenlabs/skill.meta.json",
+        "skills/ads/capabilities/create-music-elevenlabs/tests/smoke-test.md"
+      ],
       "metadata": {
         "slug": "create-music-elevenlabs",
         "category": "capabilities",
@@ -1811,10 +1823,16 @@
       "name": "create-video-fal",
       "category": "capabilities",
       "domain": "ads",
-      "description": ">-",
+      "description": "Image-to-video (or text-to-video) via any FAL video model (Kling, Seedance, Veo), ROUTED THROUGH THE GooseWorks fal-proxy so the call bills the Ads agent. The template recipe names the model + params; image_url inputs must be public URLs (the orchestrator hosts local frames via MCP get_upload_url -> get_download_url). Returns the result video URL and downloads it. Use for the generative base clip of any video-ad format.",
       "tags": "ads",
       "path": "skills/ads/capabilities/create-video-fal",
-      "files": [],
+      "files": [
+        "skills/ads/capabilities/create-video-fal/SKILL.md",
+        "skills/ads/capabilities/create-video-fal/scripts/gen_video.py",
+        "skills/ads/capabilities/create-video-fal/scripts/media_proxy.py",
+        "skills/ads/capabilities/create-video-fal/skill.meta.json",
+        "skills/ads/capabilities/create-video-fal/tests/smoke-test.md"
+      ],
       "metadata": {
         "slug": "create-video-fal",
         "category": "capabilities",
@@ -4183,10 +4201,15 @@
       "name": "media-proxy",
       "category": "capabilities",
       "domain": "ads",
-      "description": ">-",
+      "description": "Shared helper that routes ALL paid media generation (FAL image/video, ElevenLabs music) through the GooseWorks proxies so every call bills the Ads agent — never a provider SDK's default host. Host-swaps the FAL queue URLs, loads the agent token from ~/.gooseworks/credentials.json, and returns the result CDN URL. Every video-ad media capability imports this; templates never call a provider directly.",
       "tags": "ads",
       "path": "skills/ads/capabilities/media-proxy",
-      "files": [],
+      "files": [
+        "skills/ads/capabilities/media-proxy/SKILL.md",
+        "skills/ads/capabilities/media-proxy/scripts/media_proxy.py",
+        "skills/ads/capabilities/media-proxy/skill.meta.json",
+        "skills/ads/capabilities/media-proxy/tests/smoke-test.md"
+      ],
       "metadata": {
         "slug": "media-proxy",
         "category": "capabilities",
@@ -5244,10 +5267,17 @@
       "name": "render-photo-grid-card",
       "category": "capabilities",
       "domain": "ads",
-      "description": ">-",
+      "description": "Render a designed 'photo-grid promo card' video from a config — a real-DOM HTML card (wordmark + headline + 2xN tile grid of product/lifestyle/%-OFF/promo-code + feature chips) frame-stepped to PNG via Playwright and encoded with FFmpeg. Deterministic, FREE (no paid calls), text stays pixel-crisp. The template recipe supplies the config; music is added separately (create-music-elevenlabs). Use for the photo-grid-promo-card format.",
       "tags": "ads",
       "path": "skills/ads/capabilities/render-photo-grid-card",
-      "files": [],
+      "files": [
+        "skills/ads/capabilities/render-photo-grid-card/SKILL.md",
+        "skills/ads/capabilities/render-photo-grid-card/scripts/_shared.js",
+        "skills/ads/capabilities/render-photo-grid-card/scripts/build_card.py",
+        "skills/ads/capabilities/render-photo-grid-card/scripts/render.py",
+        "skills/ads/capabilities/render-photo-grid-card/skill.meta.json",
+        "skills/ads/capabilities/render-photo-grid-card/tests/smoke-test.md"
+      ],
       "metadata": {
         "slug": "render-photo-grid-card",
         "category": "capabilities",
