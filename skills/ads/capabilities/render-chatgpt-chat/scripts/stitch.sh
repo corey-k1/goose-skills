@@ -52,6 +52,16 @@ for f in "$CHAT" "$END" "$SFX_JSON"; do
   [ -f "$f" ] || { echo "MISSING: $f" >&2; exit 1; }
 done
 
+# The 4 SFX wavs are subliminal stand-ins. If a catalog fetch didn't materialize
+# the binary assets, synthesize them here so a missing wav never breaks the render
+# (the cue loop adds each as an ffmpeg input unconditionally). Swap real wavs anytime.
+mkdir -p "$SFX_DIR"
+_synth() { [ -f "$SFX_DIR/$1.wav" ] || ffmpeg -y -f lavfi -i "$2" -ar 44100 -ac 2 "$SFX_DIR/$1.wav" >/dev/null 2>&1; }
+_synth key-tap       "sine=frequency=1800:duration=0.05"
+_synth send-tap      "sine=frequency=900:duration=0.08"
+_synth stream-tick   "sine=frequency=2400:duration=0.03"
+_synth response-done "sine=frequency=600:duration=0.12"
+
 # Chat is the master canvas — never scale/stretch it. Normalize the end card to
 # the chat's exact dimensions (scale-to-fit + pad with the card's bg color).
 CW=$(ffprobe -v error -select_streams v:0 -show_entries stream=width  -of csv=p=0 "$CHAT")
