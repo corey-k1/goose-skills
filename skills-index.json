@@ -5399,6 +5399,8 @@
         "skills/ads/capabilities/render-value-prop/SKILL.md",
         "skills/ads/capabilities/render-value-prop/scripts/build_storyboard_preview.py",
         "skills/ads/capabilities/render-value-prop/scripts/build_text_overlays.py",
+        "skills/ads/capabilities/render-value-prop/scripts/config.example.json",
+        "skills/ads/capabilities/render-value-prop/scripts/render_hyperframe.py",
         "skills/ads/capabilities/render-value-prop/scripts/render_master.py",
         "skills/ads/capabilities/render-value-prop/shared/_shared.css",
         "skills/ads/capabilities/render-value-prop/shared/_shared.js",
