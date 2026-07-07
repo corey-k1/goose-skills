@@ -6888,34 +6888,6 @@
       }
     },
     {
-      "slug": "upload-ad-sample",
-      "name": "upload-ad-sample",
-      "category": "capabilities",
-      "domain": "ads",
-      "description": "Upload a finished Meta or video ad creative (image or video) to the Goose Ads sample library and fill its remix payload — recipe, script, render variant, and (for video formats like iMessage) the source conversation thread — so the sample is remixable in the app. Use after a creative is finalized and approved for showcasing on the public ads pages.",
-      "tags": "ads",
-      "path": "skills/ads/capabilities/upload-ad-sample",
-      "files": [
-        "skills/ads/capabilities/upload-ad-sample/SKILL.md",
-        "skills/ads/capabilities/upload-ad-sample/skill.meta.json"
-      ],
-      "metadata": {
-        "slug": "upload-ad-sample",
-        "category": "capabilities",
-        "tags": [
-          "ads"
-        ],
-        "installation": {
-          "base_command": "npx goose-skills install upload-ad-sample",
-          "supports": [
-            "claude",
-            "cursor",
-            "codex"
-          ]
-        }
-      }
-    },
-    {
       "slug": "uptime-monitor",
       "name": "uptime-monitor",
       "category": "capabilities",
